@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SipStation — aplikasi kasir dan point of sale modern untuk kedai minuman.">
+  <meta name="theme-color" content="#173F35">
+  <title>SipStation — Beverage POS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#appContent">Lewati ke konten utama</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+      <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+      <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+      <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+    </symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24">
+      <circle cx="9" cy="20" r="1.5"></circle>
+      <circle cx="19" cy="20" r="1.5"></circle>
+      <path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6"></path>
+    </symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24">
+      <path d="M7 8h10l-1 11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2Z"></path>
+      <path d="M6 8h12l-1-3H7Z"></path>
+      <path d="M12 5V2"></path>
+      <path d="M9.5 12.5h5"></path>
+    </symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24">
+      <path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2Z"></path>
+      <path d="M9 8h6M9 12h6M9 16h3"></path>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"></path>
+      <circle cx="9" cy="6" r="2"></circle>
+      <circle cx="15" cy="12" r="2"></circle>
+      <circle cx="8" cy="18" r="2"></circle>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="m20 20-4-4"></path>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"></path>
+    </symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24">
+      <path d="M5 12h14"></path>
+    </symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24">
+      <path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"></path>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="m6 6 12 12M18 6 6 18"></path>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6"></path>
+    </symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="m8 12 2.6 2.6L16.5 9"></path>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <path d="M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"></path>
+      <path d="M12 9v4M12 17h.01"></path>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 11v5M12 8h.01"></path>
+    </symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24">
+      <path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+      <rect x="6" y="14" width="12" height="7" rx="1"></rect>
+      <path d="M18 12h.01"></path>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path>
+    </symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24">
+      <path d="M12 20h9"></path>
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M4 12h16M14 6l6 6-6 6"></path>
+    </symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
+      <path d="M7 17 17 7M7 7h10v10"></path>
+    </symbol>
+    <symbol id="i-banknote" viewBox="0 0 24 24">
+      <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+      <circle cx="12" cy="12" r="2.5"></circle>
+      <path d="M6 10h.01M18 14h.01"></path>
+    </symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+      <rect x="15" y="3" width="6" height="6" rx="1"></rect>
+      <rect x="3" y="15" width="6" height="6" rx="1"></rect>
+      <path d="M15 15h2v2h-2zM19 15h2M15 19v2M19 19h2v2M11 3v2M3 11h2M11 11h.01M11 15v2M11 21h.01"></path>
+    </symbol>
+    <symbol id="i-card" viewBox="0 0 24 24">
+      <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+      <path d="M2 10h20M6 15h4"></path>
+    </symbol>
+    <symbol id="i-package" viewBox="0 0 24 24">
+      <path d="m12 3 9 5-9 5-9-5 9-5Z"></path>
+      <path d="m3 12 9 5 9-5M3 16l9 5 9-5"></path>
+      <path d="M12 13v8"></path>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+      <path d="M16 3v4M8 3v4M3 10h18"></path>
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <path d="M20 7v5h-5M4 17v-5h5"></path>
+      <path d="M6.1 9a7 7 0 0 1 11.4-2.5L20 9M4 15l2.5 2.5A7 7 0 0 0 17.9 15"></path>
+    </symbol>
+    <symbol id="i-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+      <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path>
+      <path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"></path>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6"></path>
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24">
+      <path d="m9 6 6 6-6 6"></path>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v5l3 2"></path>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 21a8 8 0 0 1 16 0"></path>
+    </symbol>
+    <symbol id="i-store" viewBox="0 0 24 24">
+      <path d="M3 9 5 3h14l2 6M4 13v8h16v-8"></path>
+      <path d="M9 21v-6h6v6M2 9h20l-1 2a4 4 0 0 1-6 1 4 4 0 0 1-6 0 4 4 0 0 1-6-1Z"></path>
+    </symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24">
+      <path d="M20 13 13 20l-9-9V4h7Z"></path>
+      <circle cx="8.5" cy="8.5" r="1"></circle>
+    </symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24">
+      <path d="M12 22c4.4 0 7-2.9 7-7 0-3.5-2-6.2-4.5-9C13.8 5.2 13 3.5 13 2c-2.5 1.8-3.6 4-4 6.5C8.4 7.6 8 6.8 8 6c-1.7 1.8-3 4.2-3 7.5 0 4.8 2.9 8.5 7 8.5Z"></path>
+      <path d="M9.5 17.5c0-2 1.3-3.1 2.5-4.5.7 1.4 2.5 2.6 2.5 4.5a2.5 2.5 0 0 1-5 0Z"></path>
+    </symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24">
+      <path d="m12 3 1.2 4.3L17.5 9l-4.3 1.7L12 15l-1.2-4.3L6.5 9l4.3-1.7ZM19 15l.6 2.4L22 18l-2.4.6L19 21l-.6-2.4L16 18l2.4-.6ZM5 14l.5 1.8L7.5 16l-2 .5L5 19l-.5-2.5L2.5 16l2-.2Z"></path>
+    </symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24">
+      <path d="M3 5h18l-7 8v5l-4 3v-8Z"></path>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24">
+      <rect x="4" y="10" width="16" height="11" rx="2"></rect>
+      <path d="M8 10V7a4 4 0 0 1 8 0v3M12 15v2"></path>
+    </symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24">
+      <path d="m2 2 20 20M8.5 8.5A11 11 0 0 1 21 9M5 12.5a10 10 0 0 1 2.5-1.3M2.5 16a14 14 0 0 1 4-2.1M12 20h.01M15.5 15.5a10 10 0 0 0-2-1"></path>
+    </symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" data-nav-page="dashboard" aria-label="SipStation — Dashboard">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-cup"></use></svg></span>
+        <span class="brand-copy">
+          <strong>SipStation</strong>
+          <small>Beverage POS</small>
+        </span>
+      </a>
+
+      <p class="nav-label">Menu utama</p>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="#dashboard" class="nav-link" data-nav-page="dashboard">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg></span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#kasir" class="nav-link" data-nav-page="kasir">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-cart"></use></svg></span>
+          <span>Kasir</span>
+          <span class="nav-badge" id="cartNavBadge" hidden>0</span>
+        </a>
+        <a href="#menu" class="nav-link" data-nav-page="menu">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-cup"></use></svg></span>
+          <span>Menu Minuman</span>
+        </a>
+        <a href="#riwayat" class="nav-link" data-nav-page="riwayat">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></span>
+          <span>Riwayat Transaksi</span>
+        </a>
+        <a href="#laporan" class="nav-link" data-nav-page="laporan">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></span>
+          <span>Laporan Penjualan</span>
+        </a>
+        <a href="#pengaturan" class="nav-link" data-nav-page="pengaturan">
+          <span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg></span>
+          <span>Pengaturan</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-note">
+          <span class="storage-icon"><svg class="icon" aria-hidden="true"><use href="#i-database"></use></svg></span>
+          <div>
+            <strong>Tersimpan lokal</strong>
+            <p>Data hanya tersimpan di browser ini.</p>
+          </div>
+        </div>
+        <p class="app-version">SipStation POS <span>v1.0</span></p>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <div class="topbar-heading">
+          <p class="page-kicker" id="pageKicker">Ringkasan bisnis</p>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-meta">
+          <div class="date-chip">
+            <span class="date-icon"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+            <span>
+              <small>Hari ini</small>
+              <strong id="headerDate">Kamis, 22 Oktober 2026</strong>
+            </span>
+          </div>
+          <div class="cashier-chip">
+            <span class="avatar" id="cashierAvatar">K</span>
+            <span class="cashier-copy">
+              <small>Kasir aktif</small>
+              <strong id="topbarCashierName">Kasir</strong>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="appContent" tabindex="-1">
+        <section class="page" id="page-dashboard" data-page-section="dashboard" aria-labelledby="pageTitle">
+          <div class="welcome-card">
+            <div class="welcome-content">
+              <span class="welcome-eyebrow">
+                <span class="status-dot"></span>
+                <span id="welcomeShopName">SipStation</span>
+              </span>
+              <h2>Halo, <span id="welcomeCashierName">Kasir</span>. Siap melayani?</h2>
+              <p>Pantau penjualan hari ini dan mulai pesanan baru dalam satu tempat.</p>
+              <div class="welcome-actions">
+                <button class="btn btn-accent" type="button" data-nav-page="kasir">
+                  <svg class="icon" aria-hidden="true"><use href="#i-cart"></use></svg>
+                  Mulai Transaksi
+                </button>
+                <button class="btn btn-on-dark" type="button" data-nav-page="menu">
+                  Kelola Menu
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                </button>
+              </div>
+            </div>
+            <div class="welcome-art" aria-hidden="true">
+              <div class="art-orbit art-orbit-one"></div>
+              <div class="art-orbit art-orbit-two"></div>
+              <div class="art-cup">
+                <svg class="icon"><use href="#i-cup"></use></svg>
+              </div>
+              <span class="art-bubble bubble-one"></span>
+              <span class="art-bubble bubble-two"></span>
+              <span class="art-bubble bubble-three"></span>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card metric-featured">
+              <div class="metric-top">
+                <span class="metric-label">Penjualan hari ini</span>
+                <span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#i-banknote"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="dashRevenue">Rp0</strong>
+              <p class="metric-foot" id="dashRevenueFoot">Belum ada transaksi berhasil.</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Transaksi</span>
+                <span class="metric-icon icon-mint"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="dashTransactionCount">0</strong>
+              <p class="metric-foot" id="dashTransactionFoot">Transaksi berhasil hari ini</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Minuman terjual</span>
+                <span class="metric-icon icon-peach"><svg class="icon" aria-hidden="true"><use href="#i-cup"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="dashItemCount">0</strong>
+              <p class="metric-foot" id="dashItemFoot">Total item hari ini</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Stok menipis</span>
+                <span class="metric-icon icon-warm"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="dashLowStock">0</strong>
+              <p class="metric-foot" id="dashLowStockFoot">Produk dengan stok 5 atau kurang</p>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="section-kicker">Performa</span>
+                  <h2>Penjualan 7 hari terakhir</h2>
+                </div>
+                <span class="panel-note" id="weeklyChartTotal">Total Rp0</span>
+              </div>
+              <div class="chart-area" id="weeklyChart"></div>
+            </section>
+
+            <section class="panel top-products-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="section-kicker">Sorotan</span>
+                  <h2>Produk terlaris</h2>
+                </div>
+                <span class="panel-note">7 hari terakhir</span>
+              </div>
+              <div id="topProducts"></div>
+            </section>
+          </div>
+
+          <section class="panel recent-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="section-kicker">Aktivitas</span>
+                <h2>Transaksi terbaru</h2>
+              </div>
+              <button class="text-button" type="button" data-nav-page="riwayat">
+                Lihat riwayat
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+              </button>
+            </div>
+            <div id="recentTransactions"></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-kasir" data-page-section="kasir" aria-labelledby="pageTitle" hidden>
+          <div class="pos-heading">
+            <div class="pos-tools">
+              <label class="search-field" for="posSearch">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                <input type="search" id="posSearch" placeholder="Cari minuman..." autocomplete="off">
+                <button class="search-clear" type="button" data-action="clear-pos-search" aria-label="Hapus pencarian" hidden>
+                  <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                </button>
+              </label>
+              <span class="catalog-summary" id="posCatalogSummary">8 produk tersedia</span>
+            </div>
+            <div class="category-filter" id="posCategories" role="group" aria-label="Filter kategori minuman"></div>
+          </div>
+
+          <div class="pos-layout">
+            <div class="pos-catalog">
+              <div class="catalog-bar">
+                <p id="posResultCount">Menampilkan 8 produk</p>
+                <span class="catalog-hint">Klik produk untuk mengatur pesanan</span>
+              </div>
+              <div class="product-grid" id="posProductGrid"></div>
+            </div>
+            <aside class="cart-panel" id="cartPanel" aria-label="Keranjang pesanan"></aside>
+          </div>
+        </section>
+
+        <section class="page" id="page-menu" data-page-section="menu" aria-labelledby="pageTitle" hidden>
+          <div class="page-toolbar">
+            <div class="toolbar-filters">
+              <label class="search-field" for="menuSearch">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                <input type="search" id="menuSearch" placeholder="Cari nama menu..." autocomplete="off">
+                <button class="search-clear" type="button" data-action="clear-menu-search" aria-label="Hapus pencarian" hidden>
+                  <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                </button>
+              </label>
+              <label class="select-wrap">
+                <span class="sr-only">Filter kategori menu</span>
+                <select id="menuCategory">
+                  <option value="all">Semua kategori</option>
+                  <option value="Coffee">Coffee</option>
+                  <option value="Tea">Tea</option>
+                  <option value="Milk Tea">Milk Tea</option>
+                  <option value="Matcha">Matcha</option>
+                  <option value="Non-Coffee">Non-Coffee</option>
+                </select>
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+              </label>
+            </div>
+            <button class="btn btn-primary" type="button" data-action="add-product">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+              Tambah Menu
+            </button>
+          </div>
+
+          <section class="panel menu-panel">
+            <div class="panel-heading menu-panel-heading">
+              <div>
+                <span class="section-kicker">Inventaris</span>
+                <h2>Daftar menu minuman</h2>
+              </div>
+              <span class="pill-count" id="menuCount">8 menu</span>
+            </div>
+            <div id="menuTableWrap"></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-riwayat" data-page-section="riwayat" aria-labelledby="pageTitle" hidden>
+          <section class="panel">
+            <div class="panel-heading history-heading">
+              <div>
+                <span class="section-kicker">Arsip penjualan</span>
+                <h2>Riwayat transaksi</h2>
+              </div>
+              <button class="btn btn-secondary" type="button" data-nav-page="kasir">
+                <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                Transaksi Baru
+              </button>
+            </div>
+            <div class="history-filters">
+              <label class="search-field" for="historySearch">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                <input type="search" id="historySearch" placeholder="Cari nomor transaksi..." autocomplete="off">
+                <button class="search-clear" type="button" data-action="clear-history-search" aria-label="Hapus pencarian" hidden>
+                  <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                </button>
+              </label>
+              <label class="input-with-icon">
+                <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+                <span class="sr-only">Filter tanggal transaksi</span>
+                <input type="date" id="historyDate">
+              </label>
+              <label class="select-wrap">
+                <span class="sr-only">Filter metode pembayaran</span>
+                <select id="historyMethod">
+                  <option value="all">Semua metode</option>
+                  <option value="cash">Tunai</option>
+                  <option value="qris">QRIS</option>
+                  <option value="debit">Debit</option>
+                </select>
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+              </label>
+              <button class="btn btn-tertiary" type="button" data-action="reset-history-filters">Reset filter</button>
+            </div>
+            <div class="table-meta">
+              <span id="historyResultCount">0 transaksi</span>
+              <span class="table-meta-note">Transaksi selesai dan dibatalkan tetap tercatat</span>
+            </div>
+            <div id="historyTableWrap"></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-laporan" data-page-section="laporan" aria-labelledby="pageTitle" hidden>
+          <section class="panel report-filter-panel">
+            <div class="report-filter-top">
+              <div>
+                <span class="section-kicker">Analitik</span>
+                <h2>Ringkasan penjualan</h2>
+                <p class="report-range-label" id="reportRangeLabel">Hari ini</p>
+              </div>
+              <button class="btn btn-secondary" type="button" data-action="export-csv">
+                <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                Ekspor CSV
+              </button>
+            </div>
+            <div class="report-filter-controls">
+              <div class="segmented-control" id="reportRanges" role="group" aria-label="Rentang laporan">
+                <button type="button" class="segment" data-report-range="today">Hari ini</button>
+                <button type="button" class="segment" data-report-range="7days">7 hari terakhir</button>
+                <button type="button" class="segment" data-report-range="month">Bulan ini</button>
+                <button type="button" class="segment" data-report-range="custom">Rentang khusus</button>
+              </div>
+              <div class="custom-range" id="customRange" hidden>
+                <label class="input-with-icon compact">
+                  <span class="sr-only">Tanggal mulai</span>
+                  <input type="date" id="reportDateFrom" aria-label="Tanggal mulai">
+                </label>
+                <span class="range-separator">sampai</span>
+                <label class="input-with-icon compact">
+                  <span class="sr-only">Tanggal akhir</span>
+                  <input type="date" id="reportDateTo" aria-label="Tanggal akhir">
+                </label>
+                <button class="btn btn-small btn-primary" type="button" data-action="apply-custom-range">Terapkan</button>
+              </div>
+            </div>
+          </section>
+
+          <div class="metrics-grid report-metrics">
+            <article class="metric-card metric-featured">
+              <div class="metric-top">
+                <span class="metric-label">Total omzet</span>
+                <span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#i-banknote"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="reportRevenue">Rp0</strong>
+              <p class="metric-foot">Dari transaksi berhasil</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Transaksi</span>
+                <span class="metric-icon icon-mint"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="reportTransactions">0</strong>
+              <p class="metric-foot">Transaksi berhasil</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Minuman terjual</span>
+                <span class="metric-icon icon-peach"><svg class="icon" aria-hidden="true"><use href="#i-cup"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="reportItems">0</strong>
+              <p class="metric-foot">Total item terjual</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Rata-rata transaksi</span>
+                <span class="metric-icon icon-warm"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></span>
+              </div>
+              <strong class="metric-value" id="reportAverage">Rp0</strong>
+              <p class="metric-foot">Nilai rata-rata per transaksi</p>
+            </article>
+          </div>
+
+          <div class="report-grid">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="section-kicker">Peringkat</span>
+                  <h2>Produk terlaris</h2>
+                </div>
+              </div>
+              <div id="reportTopProducts"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="section-kicker">Komposisi</span>
+                  <h2>Penjualan per kategori</h2>
+                </div>
+              </div>
+              <div id="reportCategories"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span class="section-kicker">Rincian</span>
+                <h2>Ringkasan per hari</h2>
+              </div>
+              <span class="panel-note">Omzet bukan laba bersih</span>
+            </div>
+            <div id="reportDaily"></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-pengaturan" data-page-section="pengaturan" aria-labelledby="pageTitle" hidden>
+          <form id="settingsForm" novalidate>
+            <div class="settings-grid">
+              <section class="panel settings-panel">
+                <div class="settings-heading">
+                  <span class="settings-icon"><svg class="icon" aria-hidden="true"><use href="#i-store"></use></svg></span>
+                  <div>
+                    <h2>Profil kedai</h2>
+                    <p>Ditampilkan pada dashboard dan struk pembayaran.</p>
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Nama kedai</span>
+                    <input type="text" id="settingShopName" maxlength="50" autocomplete="organization" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Nama kasir</span>
+                    <input type="text" id="settingCashierName" maxlength="40" autocomplete="name" required>
+                  </label>
+                  <label class="form-field form-span-2">
+                    <span>Alamat kedai</span>
+                    <textarea id="settingAddress" rows="2" maxlength="180" required></textarea>
+                  </label>
+                  <label class="form-field form-span-2">
+                    <span>Nomor kontak <em>Opsional</em></span>
+                    <input type="tel" id="settingContact" maxlength="30" placeholder="Contoh: 0812 3456 7890" autocomplete="tel">
+                  </label>
+                </div>
+              </section>
+
+              <section class="panel settings-panel">
+                <div class="settings-heading">
+                  <span class="settings-icon peach"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                  <div>
+                    <h2>Biaya kustomisasi</h2>
+                    <p>Tambahan harga untuk ukuran dan topping.</p>
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field form-span-2">
+                    <span>Tambahan ukuran Large</span>
+                    <div class="input-prefix">
+                      <span>Rp</span>
+                      <input type="number" id="settingLargeFee" min="0" step="500" inputmode="numeric" required>
+                    </div>
+                    <small>Ukuran Regular tidak dikenakan biaya tambahan.</small>
+                  </label>
+                  <label class="form-field">
+                    <span>Topping Pearl</span>
+                    <div class="input-prefix">
+                      <span>Rp</span>
+                      <input type="number" id="settingPearlFee" min="0" step="500" inputmode="numeric" required>
+                    </div>
+                  </label>
+                  <label class="form-field">
+                    <span>Topping Jelly</span>
+                    <div class="input-prefix">
+                      <span>Rp</span>
+                      <input type="number" id="settingJellyFee" min="0" step="500" inputmode="numeric" required>
+                    </div>
+                  </label>
+                  <label class="form-field form-span-2">
+                    <span>Topping Cheese Foam</span>
+                    <div class="input-prefix">
+                      <span>Rp</span>
+                      <input type="number" id="settingCheeseFee" min="0" step="500" inputmode="numeric" required>
+                    </div>
+                  </label>
+                </div>
+              </section>
+            </div>
+            <div class="settings-save-bar">
+              <p><svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg> Perubahan langsung diterapkan pada antarmuka dan struk.</p>
+              <button class="btn btn-primary" type="submit">
+                <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+                Simpan Pengaturan
+              </button>
+            </div>
+          </form>
+
+          <section class="panel data-panel">
+            <div class="settings-heading">
+              <span class="settings-icon"><svg class="icon" aria-hidden="true"><use href="#i-database"></use></svg></span>
+              <div>
+                <h2>Data & penyimpanan</h2>
+                <p>Data aplikasi tersimpan di localStorage browser ini, bukan di server.</p>
+              </div>
+            </div>
+            <div class="warning-note">
+              <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+              <p>Data dapat hilang jika cache atau data browsing dibersihkan, atau jika Anda menggunakan browser/perangkat lain.</p>
+            </div>
+            <div class="data-actions">
+              <div class="data-action-copy">
+                <strong>Muat ulang data demo</strong>
+                <p>Kembalikan daftar menu ke 8 produk contoh. Riwayat dan pengaturan tidak diubah.</p>
+              </div>
+              <button class="btn btn-secondary" type="button" data-action="reload-demo">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                Muat Data Demo
+              </button>
+            </div>
+            <div class="data-action-row">
+              <div class="data-action-copy">
+                <strong>Hapus seluruh data</strong>
+                <p>Menghapus produk, transaksi, pengaturan, dan keranjang secara permanen dari browser ini.</p>
+              </div>
+              <button class="btn btn-danger-outline" type="button" data-action="wipe-data">
+                <svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>
+                Hapus Data
+              </button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Navigasi seluler">
+    <a href="#dashboard" class="mobile-nav-link" data-nav-page="dashboard">
+      <svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="#kasir" class="mobile-nav-link" data-nav-page="kasir">
+      <span class="mobile-cart-wrap">
+        <svg class="icon" aria-hidden="true"><use href="#i-cart"></use></svg>
+        <span class="mobile-cart-badge" id="mobileCartBadge" hidden>0</span>
+      </span>
+      <span>Kasir</span>
+    </a>
+    <a href="#menu" class="mobile-nav-link" data-nav-page="menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-cup"></use></svg>
+      <span>Menu</span>
+    </a>
+    <a href="#riwayat" class="mobile-nav-link" data-nav-page="riwayat">
+      <svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg>
+      <span>Riwayat</span>
+    </a>
+    <a href="#laporan" class="mobile-nav-link" data-nav-page="laporan">
+      <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+      <span>Laporan</span>
+    </a>
+    <a href="#pengaturan" class="mobile-nav-link" data-nav-page="pengaturan">
+      <svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg>
+      <span>Atur</span>
+    </a>
+  </nav>
+
+  <div id="modalRoot"></div>
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+  <div id="printRoot" aria-hidden="true"></div>
+
+  <noscript>
+    <div class="noscript-banner">SipStation membutuhkan JavaScript untuk berjalan. Aktifkan JavaScript di browser Anda.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>

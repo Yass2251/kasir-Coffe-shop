@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf0e2"/>
+      <stop offset="1" stop-color="#eed6b8"/>
+    </linearGradient>
+    <linearGradient id="milk-tea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e4c097"/>
+      <stop offset=".28" stop-color="#d3a16e"/>
+      <stop offset="1" stop-color="#bb7e4e"/>
+    </linearGradient>
+    <clipPath id="cup-clip">
+      <path d="M235 158 270 391c2 12 10 19 23 19h50c13 0 21-7 23-19l35-233z"/>
+    </clipPath>
+    <filter id="soft-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#8a5b33" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <circle cx="550" cy="72" r="125" fill="#f2dfc4" opacity=".75"/>
+  <circle cx="84" cy="391" r="118" fill="#e8d0ae" opacity=".55"/>
+  <circle cx="117" cy="92" r="9" fill="#ffffff" opacity=".55"/>
+  <ellipse cx="320" cy="423" rx="139" ry="23" fill="#8d6138" opacity=".15"/>
+
+  <g filter="url(#soft-shadow)">
+    <path d="M369 76 398 198" fill="none" stroke="#8d674b" stroke-width="18" stroke-linecap="round"/>
+    <path d="M378 84 392 150" fill="none" stroke="#c5a284" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+
+    <g clip-path="url(#cup-clip)">
+      <rect x="220" y="183" width="210" height="232" fill="url(#milk-tea)"/>
+      <path d="M228 197c46 14 84-10 126 1s76 6 92-3v-21H228z" fill="#f2dfc5" opacity=".7"/>
+      <g fill="#553822" opacity=".9">
+        <circle cx="277" cy="368" r="8"/>
+        <circle cx="300" cy="383" r="7"/>
+        <circle cx="328" cy="374" r="8"/>
+        <circle cx="353" cy="386" r="7"/>
+        <circle cx="373" cy="368" r="8"/>
+        <circle cx="313" cy="352" r="7"/>
+        <circle cx="382" cy="388" r="6"/>
+        <circle cx="260" cy="389" r="6"/>
+        <circle cx="344" cy="351" r="6"/>
+        <circle cx="287" cy="337" r="5"/>
+        <circle cx="366" cy="341" r="5"/>
+      </g>
+      <rect x="289" y="237" width="35" height="35" rx="9" fill="#fff4e1" opacity=".22" transform="rotate(-13 306 254)"/>
+      <rect x="348" y="270" width="30" height="30" rx="8" fill="#fff4e1" opacity=".18" transform="rotate(12 363 285)"/>
+    </g>
+
+    <path d="M235 158 270 391c2 12 10 19 23 19h50c13 0 21-7 23-19l35-233z" fill="#ffffff" opacity=".2" stroke="#fffdf8" stroke-width="4"/>
+    <path d="M258 188 283 381" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".38"/>
+    <path d="M351 180 338 351" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity=".18"/>
+
+    <path d="M226 139c58-19 130-19 188 0l7 24c-66 23-136 23-202 0z" fill="#fffdf8"/>
+    <path d="M229 151c60 20 122 20 182 0" fill="none" stroke="#e9ddcc" stroke-width="4"/>
+    <path d="M239 137c51-14 111-14 162 0" fill="none" stroke="#ffffff" stroke-width="5" opacity=".8"/>
+    <path d="M330 187c25 7 49 6 70 0l-3 17c-21 7-43 7-64 0z" fill="#fff7e9" opacity=".7"/>
+    <circle cx="327" cy="301" r="3" fill="#f1d0a7" opacity=".75"/>
+    <circle cx="319" cy="328" r="2.5" fill="#f1d0a7" opacity=".7"/>
+    <circle cx="341" cy="265" r="2" fill="#f1d0a7" opacity=".65"/>
+  </g>
+
+  <g transform="translate(491 263)">
+    <circle r="49" fill="#fffdf8" opacity=".75"/>
+    <circle r="37" fill="#f8ede0"/>
+    <g fill="#835a38" opacity=".78">
+      <circle cx="-14" cy="-12" r="7"/>
+      <circle cx="9" cy="-17" r="5.5"/>
+      <circle cx="17" cy="7" r="7"/>
+      <circle cx="-8" cy="15" r="6"/>
+      <circle cx="-1" cy="-1" r="4"/>
+    </g>
+  </g>
+  <path d="M461 178c7-31 27-48 53-48-4 28-19 45-53 48z" fill="#debb94" opacity=".9"/>
+  <path d="M472 179c-2-22 10-39 27-46 8 20 1 39-27 46z" fill="#ecd2b3" opacity=".85"/>
+  <circle cx="151" cy="315" r="7" fill="#ffffff" opacity=".55"/>
+  <circle cx="528" cy="370" r="9" fill="#ffffff" opacity=".4"/>
+  <circle cx="180" cy="143" r="4" fill="#ffffff" opacity=".6"/>
+</svg>

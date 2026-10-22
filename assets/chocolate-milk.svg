@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5e9e2"/>
+      <stop offset="1" stop-color="#dfc2b2"/>
+    </linearGradient>
+    <linearGradient id="choco" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c19573"/>
+      <stop offset=".3" stop-color="#94654a"/>
+      <stop offset="1" stop-color="#633c2c"/>
+    </linearGradient>
+    <clipPath id="cup-clip">
+      <path d="M235 158 270 391c2 12 10 19 23 19h50c13 0 21-7 23-19l35-233z"/>
+    </clipPath>
+    <filter id="soft-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#65402f" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <circle cx="92" cy="84" r="96" fill="#ebd2c3" opacity=".62"/>
+  <circle cx="567" cy="403" r="145" fill="#d2b09c" opacity=".4"/>
+  <circle cx="554" cy="89" r="44" fill="#fff9f5" opacity=".53"/>
+  <ellipse cx="320" cy="423" rx="139" ry="23" fill="#5f4032" opacity=".16"/>
+
+  <g filter="url(#soft-shadow)">
+    <path d="M371 76 400 198" fill="none" stroke="#ede3d9" stroke-width="18" stroke-linecap="round"/>
+    <path d="M380 84 393 151" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+
+    <g clip-path="url(#cup-clip)">
+      <rect x="220" y="181" width="210" height="234" fill="url(#choco)"/>
+      <path d="M222 197c43 12 87-10 128 0s77 8 101-2v-21H222z" fill="#f2dfce" opacity=".58"/>
+      <path d="M247 182c15 19 41 12 55 30s-7 37 13 47 35-7 47 13 0 31 21 44 32 0 43 20 11 32 27 44v-59c-25-15-22-36-32-48s-23-8-33-25-5-33-22-42-28-1-37-16-5-23-21-30H247z" fill="#c69470" opacity=".35"/>
+      <rect x="287" y="248" width="36" height="36" rx="9" fill="#f2dfce" opacity=".2" transform="rotate(-14 305 266)"/>
+      <rect x="345" y="291" width="31" height="31" rx="8" fill="#f2dfce" opacity=".16" transform="rotate(13 360 306)"/>
+      <g fill="#4b2d21" opacity=".45">
+        <circle cx="281" cy="341" r="4"/>
+        <circle cx="313" cy="359" r="3"/>
+        <circle cx="347" cy="335" r="4"/>
+        <circle cx="370" cy="370" r="3"/>
+        <circle cx="323" cy="389" r="3.5"/>
+      </g>
+    </g>
+
+    <path d="M235 158 270 391c2 12 10 19 23 19h50c13 0 21-7 23-19l35-233z" fill="#ffffff" opacity=".18" stroke="#fffdf9" stroke-width="4"/>
+    <path d="M258 188 283 381" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".35"/>
+    <path d="M351 181 338 351" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity=".16"/>
+
+    <path d="M226 139c58-19 130-19 188 0l7 24c-66 23-136 23-202 0z" fill="#fffaf5"/>
+    <path d="M229 151c60 20 122 20 182 0" fill="none" stroke="#e7d9cf" stroke-width="4"/>
+    <path d="M239 137c51-14 111-14 162 0" fill="none" stroke="#ffffff" stroke-width="5" opacity=".8"/>
+    <path d="M325 185c28 8 52 7 75 0l-3 18c-23 8-47 7-70 0z" fill="#f6e9df" opacity=".7"/>
+  </g>
+
+  <g transform="translate(484 244) rotate(8)">
+    <path d="M-42-42c-7-22 20-42 44-36 24 7 32 31 18 48-7 9-20 13-34 9-12-3-22-10-28-21z" fill="#fff8f1"/>
+    <path d="M-4-77c10 8 12 20 8 30" fill="none" stroke="#e9d9cd" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-36-41c13 7 28 8 47 2" fill="none" stroke="#e4d2c5" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#6c4735" opacity=".7">
+      <circle cx="-24" cy="-52" r="3"/>
+      <circle cx="-9" cy="-60" r="2.5"/>
+      <circle cx="8" cy="-51" r="3.5"/>
+      <circle cx="24" cy="-59" r="2"/>
+    </g>
+  </g>
+  <g transform="translate(150 332)">
+    <rect x="-22" y="-22" width="44" height="44" rx="10" fill="#7c4d39" transform="rotate(12)"/>
+    <path d="M-12-16-2 5M-2-17 8 6" fill="none" stroke="#a97961" stroke-width="4" stroke-linecap="round" transform="rotate(12)"/>
+  </g>
+  <path d="M466 169c5-25 22-38 44-35-2 23-17 37-44 35z" fill="#bd8f75" opacity=".65"/>
+  <circle cx="524" cy="350" r="6" fill="#ffffff" opacity=".42"/>
+  <circle cx="170" cy="157" r="4" fill="#ffffff" opacity=".5"/>
+</svg>
